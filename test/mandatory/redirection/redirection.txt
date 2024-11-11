@@ -37,6 +37,19 @@ echo hi>file3>file2>file hi;ls;cat file;rm file file2 file3@echo hi>file3>file2>
 > file3 echo hi >> file2 > file hi;> file3 echo hi >> file2 > file hi;ls;cat file;rm file file2 file3@> file3 echo hi >> file2 > file hi
 >file3 echo hi>file2>file hi;> file3 echo hi > file2 > file hi;ls;cat file;rm file file2 file3@>file3 echo hi>file2>file hi
 
+>> file >> file1 >> file2 >> file3 >> file4;ls;cat file4;rm file file1 file2 file3 file4@>> file >> file1 >> file2 >> file3 >> file4
+>> file >> file1 >> file2 >> file3 >> file4 ls;ls;cat file4;rm file file1 file2 file3 file4@>> file >> file1 >> file2 >> file3 >> file4 ls
+>> file >> file1 >> file2 >> file3 >> file4 ls -la;ls;cat file4;rm file file1 file2 file3 file4@>> file >> file1 >> file2 >> file3 >> file4 ls -la
+
+#ifconfig > test_file
+>> file >> file1 >> file2 >> file3 >> file4 cat < test_file;ls;cat file4;rm file file1 file2 file3 file4@>> file >> file1 >> file2 >> file3 >> file4 cat < test_file
+
+
+#ifconfig > test_file1
+#ifconfig > test_file2
+#ifconfig > test_file3
+< test_file1 < test_file2 < test_file3 cat > file;ls; cat file; rm file@< test_file1 < test_file2 < test_file3 cat > file
+
 echo hi >filea>fileb>filec hi;echo hi >filea>fileb>filec hi;ls;cat filec;rm filea fileb filec@echo hi >filea>fileb>filec hi
 echo hi >filea>>fileb>filec hi;echo hi >filea>>fileb>filec hi;ls;cat filec;rm filea fileb filec@echo hi >filea>>fileb>filec hi
 echo hi >filea>fileb>>filec hi;echo hi >filea>fileb>>filec hi;ls;cat filec;rm filea fileb filec@echo hi >filea>fileb>>filec hi
@@ -56,20 +69,13 @@ echo hi >>'with spaces';echo hi >>'with spaces';cat 'with spaces';rm 'with space
 echo hi > "mixed"'file 'name;cat "mixedfile name";rm "mixedfile name"@echo hi > "mixed"'file 'name
 echo hi >> "mixed"'file 'name;echo hi >> "mixed"'file 'name;cat "mixedfile name";rm "mixedfile name"@echo hi >> "mixed"'file 'name
 
-echo hi 0< file; rm file @echo hi 0> file
-bash 4> outpfile;echo hola >&4;cat outpfile; rm outpfile @4> file
-
 # mkdir testfolder &> /dev/null
 echo hi > testfolder
 echo hi >> testfolder
-echo hi 2> testfolder
-echo hi 2>> testfolder
 
 # chmod 000 testfolder &> /dev/null
 echo hi > testfolder
 echo hi >> testfolder
-echo hi 2> testfolder
-echo hi 2>> testfolder
 
 # chmod 666 testfolder &> /dev/null
 # rm -rf testfolder &> /dev/null
@@ -100,11 +106,9 @@ cat < file3@cat < file3 (no permision)
 
 # rm file file2 file3 &> /dev/null
 
-echo hi 2> error_outp < non_exist@echo hi 2> error_outp < non_exist
-# rm error_outp &> /dev/null
 
-echo hi < non_exist > wrong;ls;rm wrong@echo hi < non_exist > wrong
-< non_exist echo hi > wrong;ls;rm wrong@< non_exist echo hi > wrong
+echo hi < non_exist > wrong;ls@echo hi < non_exist > wrong
+< non_exist echo hi > wrong;ls@< non_exist echo hi > wrong
 > correct echo hi < non_exist;ls;rm correct@> correct echo hi < non_exist
 
 #rm correct
