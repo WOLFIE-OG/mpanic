@@ -5,6 +5,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <strings.h>
+# include <bsd/string.h>
 # include <string.h>
 # include <fcntl.h>
 
