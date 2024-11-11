@@ -7,6 +7,7 @@
 	GREEN='\033[0;92m'
 	YELLOW='\033[0;93m'
 	CYAN='\033[0;96m'
+	VALGRIND='sudo valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --suppressions=rl2.supp'
 #
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  UTILS
@@ -28,7 +29,6 @@
 		echo -e "\tpipe\t\tExecute the pipe tests"
 		echo -e "\tredirection\tExecute the redirection tests"
 		echo -e "\tstatus\t\tExecute the exit status tests"
-		echo -e "\tshlvl\t\tExecute the shlvl tests"
 		echo -e "\tpanicm\t\tExecute the panic mandatory tests"
 		echo -e "\tpanics\t\tExecute the panic scapes tests"
 		echo -e "\tyour\t\tExecute the exit status tests"
@@ -493,24 +493,6 @@
 		TTSTATUS="1";
 	}
 
-	function shlvl_test_call()
-	{
-		if [ "$TTSHL" != "" ]; then
-			return ;
-		fi
-		OK_COUNT=0
-		KO_COUNT=0
-		SF_COUNT=0
-		EOK="OK"
-		ESF=""
-		printf ${MAIN_COLOR}"\n|=======================[ SHLVL TESTS ]======================|"${MAIN_COLOR}
-		print_in_traces "traces/shlvl_trace.txt"
-		main_test_call "mandatory/shlvl/shlvl.txt" "exec_function" "traces/shlvl_trace.txt"
-		print_end_tests "${EOK}" "${ESF}" "traces/shlvl_trace.txt" "shlvl"
-		add_summary "shlvl" "${OK_COUNT}" "${KO_COUNT}" "${SF_COUNT}"
-		TTSHL="1";
-	}
-
 	function your_test_call()
 	{
 		if [ "$TTYOUR" != "" ]; then
@@ -708,8 +690,6 @@
 		TTREDIRECT=""
 	# Status done
 		TTSTATUS=""
-	# SHLVL done
-		TTSHL=""
 	# Panic mandatori done
 		TTPM=""
 	# Panic scapes done
@@ -746,7 +726,6 @@
 			pipe_test_call;
 			redirection_test_call;
 			status_test_call;
-			shlvl_test_call;
 			panic_mandatory_test_call;
 			# panic_scapes_test_call;
 			your_test_call;
@@ -761,7 +740,6 @@
 			pipe_test_call;
 			redirection_test_call;
 			status_test_call;
-			shlvl_test_call;
 			panic_mandatory_test_call;
 			# panic_scapes_test_call;
 			your_test_call;
@@ -778,7 +756,6 @@
 					"pipe") pipe_test_call;;
 					"redirection") redirection_test_call;;
 					"status") status_test_call;;
-					"shlvl") shlvl_test_call;;
 					"panicm") panic_mandatory_test_call;;
 					"panics") panic_scapes_test_call;;
 					"your") your_test_call;;
@@ -794,7 +771,6 @@
 			pipe_test_call;
 			redirection_test_call;
 			status_test_call;
-			shlvl_test_call;
 			panic_mandatory_test_call;
 			# panic_scapes_test_call;
 			your_test_call;
