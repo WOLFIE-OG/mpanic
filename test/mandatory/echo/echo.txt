@@ -12,6 +12,11 @@ echo -nn hi
 echo -n -n hi
 echo hi -n
 echo "-n -n -n" -n hi
+echo ----nnnnnnnnnnnnn hi
+echo -nnnnnnnnnnnnb hi
+echo -nnnnbnnnnnnnnn hi
+echo -bnnnnnnnnn hi 
+echo -nnnnnnnnnn -nnnnnnnnnnnn -nnnnnnnn hi
 
 #echo echo wtf u execute? > ~/echo 2> /dev/null; chmod 777 ~/echo;export EXPATH="$PATH" PATH="/Users/$USER:$PATH"
 echo this is the buildin gj@check if launch execve
