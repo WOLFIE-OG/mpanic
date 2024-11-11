@@ -87,7 +87,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	size;
 
 	size = strlen(s1) + strlen(s2) + 1;
-	str = (char *)calloc(sizeof(char), size);
+	str = (char *)calloc(sizeof(char) * 1, size);
 	if (str == NULL)
 		return (0);
 	strncpy(str, s1, strlen(s1) + 1);
@@ -102,7 +102,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	size = strlen(s);
 	if (!*s || size < start)
-		return (calloc(sizeof(char), 1));
+		return (calloc(sizeof(char) * 1, 1));
 	if ((len + start) > size)
 		len = size - start;
 	str = malloc(sizeof(char) * (len + 1));
