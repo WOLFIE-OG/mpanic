@@ -596,7 +596,7 @@
 	INPUT_FILE=cleaner.c
 
 	if [ -r "$INPUT_FILE" ]; then
-		error_message=$(gcc -Wall -Wextra -Werror $INPUT_FILE -o cleaner 2>&1)
+		error_message=$(gcc -Wall -Wextra -Werror -lbsd $INPUT_FILE -o cleaner 2>&1)
 		if echo "$error_message" | grep -q "error:"; then
 			echo "Compilation error in file: cleaner.c:"$'\n'"$error_message"$'\n'
 			exit 1
