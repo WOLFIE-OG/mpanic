@@ -5,7 +5,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 # include <strings.h>
-# include <bsd/string.h>
+# include <string.h>
 # include <fcntl.h>
 
 char	*ft_strjoin(char *s1, char *s2);
